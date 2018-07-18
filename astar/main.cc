@@ -23,8 +23,7 @@ void astar(vector<pair<int, int>> adj[], int s, int t, map<int, int> h) {
             int v = u.first;
             int cost = u.second;
             if(distance[p] + cost < distance[v]) {
-                int heu = u.second;
-                int priority = cost + (h[t] + heu);
+                int priority = distance[p] + cost + h[t];
                 distance[v] = distance[p] + cost;
                 pq.push({-priority, v});
             }

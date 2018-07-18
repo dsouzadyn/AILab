@@ -21,7 +21,7 @@ void gbfs(vector<pair<int, int>> adj[], int s, int t, map<int, int> h) {
             int v = u.first;
             if(visited[v]) continue;
             int heu = u.second;
-            int priority = h[t] + heu;
+            int priority = h[t];
             pq.push({-priority, v});
             visited[v] = true;
         }
