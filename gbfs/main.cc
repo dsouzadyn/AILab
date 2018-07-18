@@ -11,11 +11,13 @@ void gbfs(vector<pair<int, int>> adj[], int s, int t, map<int, int> h) {
     distance[s] = 0;
     pq.push({0, s});
     cout << "Route: " << endl;
+    int total = 0;
     while(!pq.empty()) {
         int p = pq.top().second;
+        total += h[p];
         pq.pop();
         char o = p + 'A';
-        cout << o << endl;
+        cout << o << " : " << h[p] << endl;
         if(p == t) break;
         for(auto u: adj[p]) {
             int v = u.first;
@@ -26,6 +28,7 @@ void gbfs(vector<pair<int, int>> adj[], int s, int t, map<int, int> h) {
             visited[v] = true;
         }
     }
+    cout << "Total Cost: " << total << endl;
     cout << "Heuristics: " << endl;
     for(auto i : h) {
         char o = i.first + 'A';

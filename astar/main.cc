@@ -11,13 +11,15 @@ void astar(vector<pair<int, int>> adj[], int s, int t, map<int, int> h) {
     distance[s] = 0;
     pq.push({0, s});
     cout << "Route: " << endl;
+    int total = 0;
     while(!pq.empty()) {
         int p = pq.top().second;
         pq.pop();
         if(visited[p]) continue;
         visited[p] = true;
         char o = p + 'A';
-        cout << o << endl;
+        total += (distance[p] + h[p]);
+        cout << o << " : " << distance[p] + h[p] << endl;
         if(p == t) break;
         for(auto u: adj[p]) {
             int v = u.first;
@@ -29,6 +31,7 @@ void astar(vector<pair<int, int>> adj[], int s, int t, map<int, int> h) {
             }
         }
     }
+    cout << "Total Cost: " << total << endl;
     cout << "Heuristics: " << endl;
     for(int i = 0; i < 27; i++) {
         if(distance[i] != INT_MAX) {
